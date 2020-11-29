@@ -1,4 +1,4 @@
-package kero.domain.exception;
+package kero.domain.exceptions;
 
 public class AppException extends Exception {
 
