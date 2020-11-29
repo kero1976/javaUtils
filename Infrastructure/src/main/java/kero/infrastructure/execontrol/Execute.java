@@ -4,6 +4,12 @@ import kero.domain.entities.Exe;
 import kero.domain.exceptions.AppException;
 import kero.domain.repositories.IexeControl;
 
+/**
+ * 実行クラス.
+ *
+ * @author kero
+ *
+ */
 public class Execute implements IexeControl {
 
   /**
@@ -11,7 +17,8 @@ public class Execute implements IexeControl {
    *
    * @throws AppException 例外
    */
-  public static void execute() throws AppException {
+  public static void execute2() throws AppException {
+
     ProcessBuilder pb = new ProcessBuilder("java", "-version");
     try {
       Process process = pb.start();
