@@ -6,4 +6,12 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>Infrastructure</artifactId>
+
+     <dependencies>
+           <dependency>
+            <groupId>kero</groupId>
+            <artifactId>Domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+   </dependencies>
 </project>

@@ -1,8 +1,10 @@
 package kero.infrastructure.execontrol;
 
+import kero.domain.exception.AppException;
+
 public class Execute {
 
-	public static void execute() {
+	public static void execute() throws AppException {
 		ProcessBuilder pb = new ProcessBuilder("java", "-version");
 		try {
 			Process process = pb.start();
