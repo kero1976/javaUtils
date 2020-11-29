@@ -13,7 +13,11 @@ public class InputStreamThread extends Thread {
 
   private List<String> list = new ArrayList<String>();
 
-  /** コンストラクター */
+  /**
+   * コンストラクター.
+   *
+   * @param is InputStream
+   */
   public InputStreamThread(InputStream is) {
     try {
       br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
@@ -22,7 +26,12 @@ public class InputStreamThread extends Thread {
     }
   }
 
-  /** コンストラクター */
+  /**
+   * コンストラクター.
+   *
+   * @param is InputStream
+   * @param charset String
+   */
   public InputStreamThread(InputStream is, String charset) {
     try {
       br = new BufferedReader(new InputStreamReader(is, charset));
@@ -51,7 +60,11 @@ public class InputStreamThread extends Thread {
     }
   }
 
-  /** 文字列取得 */
+  /**
+   * 文字列取得.
+   *
+   * @return 文字列
+   */
   public List<String> getStringList() {
     return list;
   }

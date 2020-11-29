@@ -5,5 +5,5 @@ import kero.domain.exceptions.AppException;
 
 public interface IexeControl {
 
-	int execute(Exe exe) throws AppException;
+  int execute(Exe exe) throws AppException;
 }
