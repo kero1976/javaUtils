@@ -15,6 +15,12 @@ public class Exe {
     return params;
   }
 
+  /**
+   * コンストラクタ.
+   *
+   * @param name 実行モジュール名
+   * @param params 起動パラメータ
+   */
   public Exe(String name, List<String> params) {
     super();
     this.name = name;

@@ -6,6 +6,11 @@ import kero.domain.repositories.IexeControl;
 
 public class Execute implements IexeControl {
 
+  /**
+   * 実行.
+   *
+   * @throws AppException 例外
+   */
   public static void execute() throws AppException {
     ProcessBuilder pb = new ProcessBuilder("java", "-version");
     try {
