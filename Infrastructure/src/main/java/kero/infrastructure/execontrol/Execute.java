@@ -3,6 +3,8 @@ package kero.infrastructure.execontrol;
 import kero.domain.entities.Exe;
 import kero.domain.exceptions.AppException;
 import kero.domain.repositories.IexeControl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 実行クラス.
@@ -11,6 +13,7 @@ import kero.domain.repositories.IexeControl;
  *
  */
 public class Execute implements IexeControl {
+  private static Logger log = LoggerFactory.getLogger(Execute.class);
 
   /**
    * 実行.
@@ -56,6 +59,10 @@ public class Execute implements IexeControl {
 
   @Override
   public int execute(Exe exe) throws AppException {
+    log.trace("trace");
+    log.debug("debug");
+    log.info("info");
+    log.error("error");
     ProcessBuilder pb = CreateProcess.create(exe);
     try {
       Process process = pb.start();
