@@ -45,8 +45,9 @@ public class InputStreamThread extends Thread {
     try {
       for (;;) {
         String line = br.readLine();
-        if (line == null)
+        if (line == null) {
           break;
+        }
         list.add(line);
       }
     } catch (IOException e) {
