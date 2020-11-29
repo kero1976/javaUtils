@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 class AppExceptionTest {
 
-	@Test
-	void test() {
+  @Test
+  void test() {
 
-	}
+  }
 
 }

@@ -4,9 +4,10 @@ import kero.domain.exceptions.AppException;
 
 public class ExeControlException extends AppException {
 
-	private String msg;
-	public ExeControlException(String string) {
-		this.msg = string;
-	}
+  private String msg;
+
+  public ExeControlException(String string) {
+    this.msg = string;
+  }
 
 }

@@ -9,49 +9,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputStreamThread extends Thread {
-	private BufferedReader br;
+  private BufferedReader br;
 
-	private List<String> list = new ArrayList<String>();
+  private List<String> list = new ArrayList<String>();
 
-	/** コンストラクター */
-	public InputStreamThread(InputStream is) {
-		try {
-			br = new BufferedReader(new InputStreamReader(is,"UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e);
-		}
-	}
+  /** コンストラクター */
+  public InputStreamThread(InputStream is) {
+    try {
+      br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
-	/** コンストラクター */
-	public InputStreamThread(InputStream is, String charset) {
-		try {
-			br = new BufferedReader(new InputStreamReader(is, charset));
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e);
-		}
-	}
+  /** コンストラクター */
+  public InputStreamThread(InputStream is, String charset) {
+    try {
+      br = new BufferedReader(new InputStreamReader(is, charset));
+    } catch (UnsupportedEncodingException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
-	@Override
-	public void run() {
-		try {
-			for (;;) {
-				String line = br.readLine();
-				if (line == null) 	break;
-				list.add(line);
-			}
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+  @Override
+  public void run() {
+    try {
+      for (;;) {
+        String line = br.readLine();
+        if (line == null)
+          break;
+        list.add(line);
+      }
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        br.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
 
-	/** 文字列取得 */
-	public List<String> getStringList() {
-		return list;
-	}
+  /** 文字列取得 */
+  public List<String> getStringList() {
+    return list;
+  }
 }
