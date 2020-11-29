@@ -84,9 +84,11 @@ public class Execute implements IexeControl {
       System.out.println("戻り値：" + process.exitValue());
 
       // 標準出力の内容を出力
+      System.out.println("STDOUT");
       for (String s : it.getStringList()) {
         System.out.println(s);
       }
+      System.out.println("STDERR");
       // 標準エラーの内容を出力
       for (String s : et.getStringList()) {
         System.err.println(s);
