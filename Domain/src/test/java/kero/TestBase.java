@@ -1,6 +1,8 @@
 package kero;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import kero.domain.helpers.PathHelper;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,7 +28,8 @@ public abstract class TestBase {
   @BeforeAll
   static void setWorkDir() {
     if (PathHelper.getCurrentDirName() != "work") {
-      System.setProperty("user.dir", "./src/test/work");
+      Path p = Paths.get("./src/test/work");
+      System.setProperty("user.dir", p.toAbsolutePath().toString());
     }
   }
 
@@ -44,17 +47,16 @@ public abstract class TestBase {
   }
 
   protected void copy(String dir) throws TestException {
-    log.trace("trace");
+
     log.debug("debug");
-    log.info("info");
-    log.error("error");
+
     try {
       File f = new File(getTestDir() + dir);
-      FileUtils.copyDirectory(f, new File("./"));
+
+      FileUtils.copyDirectory(f.getAbsoluteFile(), new File("./"));
+      log.debug("END");
     } catch (Exception e) {
-      log.trace("trace" + e);
-      log.debug("debug" + e);
-      log.info("info" + e);
+
       log.error("error" + e);
       throw new TestException();
     }

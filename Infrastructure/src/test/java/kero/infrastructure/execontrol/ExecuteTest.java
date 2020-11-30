@@ -38,7 +38,7 @@ class ExecuteTest extends TestBase {
     Exe exe = new Exe("test.bat", param);
     Execute execute = new Execute();
     int result = execute.execute(exe);
-    Assertions.assertThat(result).isEqualTo(1);
+    Assertions.assertThat(result).isEqualTo(10);
   }
 
   protected String setTestDir() {
