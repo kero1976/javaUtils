@@ -30,6 +30,16 @@ class ExecuteTest extends TestBase {
     Assertions.assertThat(result).isEqualTo(1);
   }
 
+  @Test
+  void BATテスト1() throws AppException {
+    copy("test1");
+    List<String> param = new ArrayList<String>();
+    param.add("-version2");
+    Exe exe = new Exe("test.bat", param);
+    Execute execute = new Execute();
+    int result = execute.execute(exe);
+    Assertions.assertThat(result).isEqualTo(1);
+  }
 
   protected String setTestDir() {
     return "ExeControl";
