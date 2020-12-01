@@ -52,7 +52,7 @@ public abstract class TestBase {
 
     try {
       File f = new File(getTestDir() + dir);
-
+      log.debug("ファイルパス；" + f.getAbsoluteFile().toString());
       FileUtils.copyDirectory(f.getAbsoluteFile(), new File("./"));
       log.debug("END");
     } catch (Exception e) {
