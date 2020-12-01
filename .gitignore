@@ -28,3 +28,4 @@ hs_err_pid*
 
 # targetフォルダは管理対象外
 target/
+src/test/work/
