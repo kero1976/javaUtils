@@ -55,11 +55,9 @@ public abstract class TestBase {
     log.debug("debug");
 
     try {
-      File f = new File(getTestDir() + dir);
-      Path p = f.getAbsoluteFile().toPath().normalize();
-      log.error(p.toString());
-      log.debug("ファイルパス；" + p.toFile());
-      FileUtils.copyDirectory(p.toFile(), new File("./"));
+      File f = PathHelper.getAbsoluteFile(getTestDir() + dir);
+
+      FileUtils.copyDirectory(f, new File("./"));
       log.debug("END");
     } catch (Exception e) {
 
