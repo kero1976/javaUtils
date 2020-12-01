@@ -27,11 +27,13 @@ public abstract class TestBase {
 
   @BeforeAll
   static void setWorkDir() {
-    log.debug("作業フォルダ;" + PathHelper.getCurrentDirName());
-    if (PathHelper.getCurrentDirName() != "work") {
+    log.debug("作業フォルダ;[" + PathHelper.getCurrentDirName() + "]");
+    if (!PathHelper.getCurrentDirName().equals("work")) {
       log.debug("変更");
       Path p = Paths.get("./src/test/work");
       System.setProperty("user.dir", p.toAbsolutePath().toString());
+    } else {
+      log.debug("変更しません");
     }
   }
 
@@ -54,8 +56,10 @@ public abstract class TestBase {
 
     try {
       File f = new File(getTestDir() + dir);
-      log.debug("ファイルパス；" + f.getAbsoluteFile().toString());
-      FileUtils.copyDirectory(f.getAbsoluteFile(), new File("./"));
+      Path p = f.getAbsoluteFile().toPath().normalize();
+      log.error(p.toString());
+      log.debug("ファイルパス；" + p.toFile());
+      FileUtils.copyDirectory(p.toFile(), new File("./"));
       log.debug("END");
     } catch (Exception e) {
 
