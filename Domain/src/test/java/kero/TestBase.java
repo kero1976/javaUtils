@@ -27,7 +27,9 @@ public abstract class TestBase {
 
   @BeforeAll
   static void setWorkDir() {
+    log.debug("作業フォルダ;" + PathHelper.getCurrentDirName());
     if (PathHelper.getCurrentDirName() != "work") {
+      log.debug("変更");
       Path p = Paths.get("./src/test/work");
       System.setProperty("user.dir", p.toAbsolutePath().toString());
     }
