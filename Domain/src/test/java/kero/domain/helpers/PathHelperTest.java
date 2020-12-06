@@ -1,7 +1,10 @@
 package kero.domain.helpers;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import java.io.File;
 import kero.TestBase;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class PathHelperTest extends TestBase {
@@ -17,4 +20,33 @@ class PathHelperTest extends TestBase {
     return null;
   }
 
+  @Nested
+  class getAbsoluteFile {
+    @Test
+    void カレントのファイル() {
+      File f = PathHelper.getAbsoluteFile("abc.txt");
+      assertThat(f.toString())
+          .isEqualTo("C:\\Users\\kero\\git\\javaUtils\\Domain\\src\\test\\work\\abc.txt");
+    }
+
+    @Test
+    void 親階層のファイル() {
+      File f = PathHelper.getAbsoluteFile("../abc.txt");
+      assertThat(f.toString())
+          .isEqualTo("C:\\Users\\kero\\git\\javaUtils\\Domain\\src\\test\\abc.txt");
+    }
+
+    @Test
+    void 子階層のファイル() {
+      File f = PathHelper.getAbsoluteFile("sub/abc.txt");
+      assertThat(f.toString())
+          .isEqualTo("C:\\Users\\kero\\git\\javaUtils\\Domain\\src\\test\\work\\sub\\abc.txt");
+    }
+
+    @Test
+    void 存在しないファイル() {
+      File f = PathHelper.getAbsoluteFile("D:\\test\\このフォルダは存在しない\\abc.txt");
+      assertThat(f.toString()).isEqualTo("D:\\test\\このフォルダは存在しない\\abc.txt");
+    }
+  }
 }
