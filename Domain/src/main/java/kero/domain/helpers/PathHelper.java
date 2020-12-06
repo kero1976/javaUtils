@@ -3,6 +3,7 @@ package kero.domain.helpers;
 import java.io.File;
 import java.nio.file.Path;
 
+
 public final class PathHelper {
 
   public static String getCurrentDirName() {
@@ -10,6 +11,13 @@ public final class PathHelper {
     return path.substring(path.lastIndexOf(File.separatorChar) + 1, path.length());
   }
 
+
+  /**
+   * 指定した文字列の絶対パスのFileクラスを返す.
+   *
+   * @param dir 相対・絶対のファイルパス
+   * @return
+   */
   public static File getAbsoluteFile(String dir) {
     File f = new File(dir);
     Path p = f.getAbsoluteFile().toPath().normalize();
