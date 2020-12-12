@@ -54,7 +54,6 @@ class PathHelperTest extends TestBase {
     void 例外_null() throws AppIllegalArgumentException {
       AppException e = assertThrows(AppException.class, () -> PathHelper.getAbsoluteFile(null));
       assertEquals("PathHelper.toAbsoluteメソッドでエラー。path:null", e.getUserMessage());
-      System.out.println(e.getDeveloperMessage());
     }
   }
 
