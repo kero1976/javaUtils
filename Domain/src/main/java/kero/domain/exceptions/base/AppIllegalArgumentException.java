@@ -3,7 +3,7 @@ package kero.domain.exceptions.base;
 public class AppIllegalArgumentException extends AppException {
 
   private String msg;
-  private Exception e;
+  private Exception exception;
 
   public AppIllegalArgumentException(String msg) {
     this(msg, null);
@@ -11,13 +11,12 @@ public class AppIllegalArgumentException extends AppException {
 
   public AppIllegalArgumentException(String msg, Exception e) {
     this.msg = msg;
-    this.e = e;
+    this.exception = e;
   }
 
   @Override
   protected Exception getOriginalException() {
-    // TODO 自動生成されたメソッド・スタブ
-    return e;
+    return exception;
   }
 
   @Override

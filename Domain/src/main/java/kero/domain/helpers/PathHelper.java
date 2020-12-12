@@ -43,7 +43,7 @@ public final class PathHelper {
    *
    * @param path 相対・絶対のファイルパス
    * @return 指定したファイルパスを絶対パスに変更しFileクラス
-   * @throws AppIllegalArgumentException
+   * @throws AppIllegalArgumentException パスが不正
    */
   public static File getAbsoluteFile(String path) throws AppIllegalArgumentException {
     log.debug("dir:" + path);
@@ -57,6 +57,7 @@ public final class PathHelper {
    *
    * @param f 変換前のファイルパス文字列(相対パス、不要なパスを含む)
    * @return 変換後のFile(絶対パス、不要なパスを含まない()
+   * @throws AppIllegalArgumentException パスが不正
    */
   static File toAbsolute(String path) throws AppIllegalArgumentException {
     try {
