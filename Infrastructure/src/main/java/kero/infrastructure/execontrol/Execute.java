@@ -3,6 +3,7 @@ package kero.infrastructure.execontrol;
 import kero.domain.entities.Exe;
 import kero.domain.exceptions.base.AppException;
 import kero.domain.repositories.IexeControl;
+import kero.infrastructure.execontrol.exceptions.ExeControlException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,7 +103,7 @@ public class Execute implements IexeControl {
     } catch (Exception e) {
       log.debug("Exception:" + e);
       e.printStackTrace();
-      throw new AppException();
+      throw new ExeControlException("");
     }
   }
 
