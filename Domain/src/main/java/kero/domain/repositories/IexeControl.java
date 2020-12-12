@@ -1,7 +1,7 @@
 package kero.domain.repositories;
 
 import kero.domain.entities.Exe;
-import kero.domain.exceptions.AppException;
+import kero.domain.exceptions.base.AppException;
 
 public interface IexeControl {
 

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import kero.TestBase;
 import kero.domain.entities.Exe;
-import kero.domain.exceptions.AppException;
+import kero.domain.exceptions.base.AppException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

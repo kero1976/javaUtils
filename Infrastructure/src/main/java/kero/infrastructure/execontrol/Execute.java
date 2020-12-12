@@ -1,7 +1,7 @@
 package kero.infrastructure.execontrol;
 
 import kero.domain.entities.Exe;
-import kero.domain.exceptions.AppException;
+import kero.domain.exceptions.base.AppException;
 import kero.domain.repositories.IexeControl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -2,6 +2,7 @@ package kero.domain.helpers;
 
 import java.io.File;
 import java.nio.file.Path;
+import kero.domain.exceptions.base.AppIllegalArgumentException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,14 @@ public final class PathHelper {
    * @return 作業フォルダの絶対パス
    */
   public static String getCurrentDirFullPath() {
-    return toAbsolute(new File(".")).toString();
+    String s = null;
+    try {
+      s = toAbsolute(".").toString();
+    } catch (AppIllegalArgumentException e) {
+      // 例外は発生することは無いので、呼び出し元に例外は戻さない
+      log.error(e.getDeveloperMessage());
+    }
+    return s;
   }
 
   /**
@@ -33,12 +41,13 @@ public final class PathHelper {
   /**
    * 指定した文字列の絶対パスのFileクラスを返す.
    *
-   * @param dir 相対・絶対のファイルパス
+   * @param path 相対・絶対のファイルパス
    * @return 指定したファイルパスを絶対パスに変更しFileクラス
+   * @throws AppIllegalArgumentException
    */
-  public static File getAbsoluteFile(String dir) {
-    log.debug("dir:" + dir);
-    File f = toAbsolute(new File(dir));
+  public static File getAbsoluteFile(String path) throws AppIllegalArgumentException {
+    log.debug("dir:" + path);
+    File f = toAbsolute(path);
     log.debug("Path:" + f);
     return f;
   }
@@ -46,11 +55,16 @@ public final class PathHelper {
   /**
    * 不要なパスを削除した絶対パスへの変換.
    *
-   * @param f 変換前のFile(相対パス、不要なパスを含む)
+   * @param f 変換前のファイルパス文字列(相対パス、不要なパスを含む)
    * @return 変換後のFile(絶対パス、不要なパスを含まない()
    */
-  static File toAbsolute(File f) {
-    Path p = f.getAbsoluteFile().toPath().normalize();
-    return p.toFile();
+  static File toAbsolute(String path) throws AppIllegalArgumentException {
+    try {
+      File f = new File(path);
+      Path p = f.getAbsoluteFile().toPath().normalize();
+      return p.toFile();
+    } catch (Exception e) {
+      throw new AppIllegalArgumentException("PathHelper.toAbsoluteメソッドでエラー。path:" + path, e);
+    }
   }
 }

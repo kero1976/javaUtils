@@ -1,6 +1,6 @@
 package kero.infrastructure.execontrol.exceptions;
 
-import kero.domain.exceptions.AppException;
+import kero.domain.exceptions.base.AppException;
 
 public class ExeControlException extends AppException {
 
