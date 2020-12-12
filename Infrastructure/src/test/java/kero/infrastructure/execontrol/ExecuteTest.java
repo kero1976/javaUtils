@@ -31,6 +31,17 @@ class ExecuteTest extends TestBase {
   }
 
   @Test
+  void Javaクラス実行() throws AppException {
+    List<String> param = new ArrayList<String>();
+    param.add("kero.domain.Sample");
+    param.add("kero.domain.Sample");
+    Exe exe = new Exe("java", param);
+    Execute execute = new Execute();
+    int result = execute.execute(exe);
+    Assertions.assertThat(result).isEqualTo(1);
+  }
+
+  @Test
   void BATテスト1() throws AppException {
     copy("test1");
     List<String> param = new ArrayList<String>();

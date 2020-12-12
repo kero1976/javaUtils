@@ -59,18 +59,17 @@ public class Execute implements IexeControl {
 
   @Override
   public int execute(Exe exe) throws AppException {
-    log.trace("trace");
-    log.debug("debug");
-    log.info("info");
-    log.error("error");
+    log.debug("START=====================================================================");
+    log.debug("Exe:" + exe);
+
     ProcessBuilder pb = CreateProcess.create(exe);
     try {
       Process process = pb.start();
 
 
       // InputStreamのスレッド開始
-      InputStreamThread it = new InputStreamThread(process.getInputStream());
-      InputStreamThread et = new InputStreamThread(process.getErrorStream());
+      InputStreamThread it = new InputStreamThread(process.getInputStream(), "SJIS");
+      InputStreamThread et = new InputStreamThread(process.getErrorStream(), "SJIS");
       it.start();
       et.start();
 
@@ -81,22 +80,27 @@ public class Execute implements IexeControl {
       it.join();
       et.join();
 
-      System.out.println("戻り値：" + process.exitValue());
-
+      int result = process.exitValue();
+      System.out.println("戻り値：" + result);
+      log.debug("戻り値：" + result);
       // 標準出力の内容を出力
       System.out.println("STDOUT");
+      log.debug("STDOUT");
       for (String s : it.getStringList()) {
         System.out.println(s);
+        log.debug(s);
       }
       System.out.println("STDERR");
+      log.debug("STDERR");
       // 標準エラーの内容を出力
       for (String s : et.getStringList()) {
         System.err.println(s);
+        log.debug(s);
       }
-
-      return process.exitValue();
+      log.debug("END=======================================================================");
+      return result;
     } catch (Exception e) {
-      // TODO 自動生成された catch ブロック
+      log.debug("Exception:" + e);
       e.printStackTrace();
       throw new AppException();
     }

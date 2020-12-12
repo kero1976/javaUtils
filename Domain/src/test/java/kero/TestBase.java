@@ -27,21 +27,15 @@ public abstract class TestBase {
 
   @BeforeAll
   static void setWorkDir() {
-    log.debug("作業フォルダ;[" + PathHelper.getCurrentDirName() + "]");
     if (!PathHelper.getCurrentDirName().equals("work")) {
-      log.debug("変更");
       Path p = Paths.get("./src/test/work");
       System.setProperty("user.dir", p.toAbsolutePath().toString());
-    } else {
-      log.debug("変更しません");
     }
   }
 
   @BeforeEach
   void setUp() throws Exception {
     File workDir = new File("../work");
-
-
   }
 
   protected abstract String setTestDir();
