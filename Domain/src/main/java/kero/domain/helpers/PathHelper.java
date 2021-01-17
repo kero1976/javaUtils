@@ -2,15 +2,13 @@ package kero.domain.helpers;
 
 import java.io.File;
 import java.nio.file.Path;
+
 import kero.domain.exceptions.base.AppIllegalArgumentException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 
-
+@Slf4j
 public final class PathHelper {
-
-  private static Logger log = LoggerFactory.getLogger(PathHelper.class);
 
   /**
    * 作業フォルダの絶対パスを取得する.
