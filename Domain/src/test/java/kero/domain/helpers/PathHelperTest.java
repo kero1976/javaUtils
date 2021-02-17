@@ -1,16 +1,17 @@
 package kero.domain.helpers;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
-import kero.TestBase;
-import kero.domain.exceptions.base.AppException;
-import kero.domain.exceptions.base.AppIllegalArgumentException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import kero.TestBase;
+import kero.domain.exceptions.base.AppException;
+import kero.domain.exceptions.base.AppIllegalArgumentException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 class PathHelperTest extends TestBase {
 
   @Test
@@ -63,6 +64,7 @@ class PathHelperTest extends TestBase {
     @Test
     void 正常系() {
       String str = PathHelper.getCurrentDirName();
+      log.debug("作業フォルダのフォルダ名を取得する:{}", str);
       assertThat(str.toString()).isEqualTo("work");
     }
   }
@@ -73,6 +75,7 @@ class PathHelperTest extends TestBase {
     @Test
     void 正常系() {
       String str = PathHelper.getCurrentDirFullPath();
+      log.debug("作業フォルダのFullPathを取得する:{}", str);
       assertThat(str.toString()).endsWith("\\Domain\\src\\test\\work");
     }
   }
