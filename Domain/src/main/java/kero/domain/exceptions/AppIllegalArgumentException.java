@@ -1,4 +1,6 @@
-package kero.domain.exceptions.base;
+package kero.domain.exceptions;
+
+import kero.domain.exceptions.base.AppException;
 
 public class AppIllegalArgumentException extends AppException {
 

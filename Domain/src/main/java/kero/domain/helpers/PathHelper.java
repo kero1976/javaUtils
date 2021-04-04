@@ -3,11 +3,16 @@ package kero.domain.helpers;
 import java.io.File;
 import java.nio.file.Path;
 
-import kero.domain.exceptions.base.AppIllegalArgumentException;
+import kero.domain.exceptions.AppIllegalArgumentException;
 import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
+/**
+ * ファイルパスの相対・絶対パスを確認するためのヘルパークラス
+ * @author けろ
+ *
+ */
 public final class PathHelper {
 
   /**

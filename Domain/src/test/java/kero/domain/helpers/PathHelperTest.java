@@ -7,8 +7,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import kero.TestBase;
+import kero.domain.exceptions.AppIllegalArgumentException;
 import kero.domain.exceptions.base.AppException;
-import kero.domain.exceptions.base.AppIllegalArgumentException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
