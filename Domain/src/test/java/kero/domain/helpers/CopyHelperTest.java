@@ -13,7 +13,7 @@ public class CopyHelperTest {
   void CopyTest() {
     log.debug("CopyTest");
     try {
-      CopyHelper.Copy("../resources/テストデータ/domain/helpers/CopyHelper/test1", "dest");
+      CopyHelper.copy("../resources/テストデータ/domain/helpers/CopyHelper/test1", "dest");
     } catch (AppIOException e) {
       fail();
     }
